@@ -34,6 +34,8 @@ exports.sourceNodes = async (
         rating: movie.vote_average,
         overview: movie.overview,
         genres: movie.genre_ids,
+        releaseDate: movie.release_date,
+        popularity: movie.popularity,
       },
       url: `https://image.tmdb.org/t/p/w780${movie.poster_path}`
 

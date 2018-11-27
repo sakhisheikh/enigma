@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "gatsby-plugin-manifest": "^2.0.10",
+    "gatsby-plugin-offline": "^2.0.17"
+  }
+}

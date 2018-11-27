@@ -29,6 +29,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Input from '@material-ui/core/Input';
 import { MOVIE_GENRES } from '../utils/Constants';
+import '../components/styles.css'
 
 const drawerWidth = 240;
 
@@ -40,6 +41,16 @@ const theme = createMuiTheme({
         boxShadow: '5px 0 5px -2px #888',
       },
     },
+    MuiInput: {
+      root: {
+        background: 'transparent',
+      },
+      underline: {
+        "&$focused:after": {
+          borderBottomColor: '#818181',
+        }
+      }
+    },
   },
   typography: {
     useNextVariants: true,
@@ -49,20 +60,25 @@ const theme = createMuiTheme({
 
 const styles = theme => ({
   root: {
-    //flexGrow: 1,
+    flexGrow: 1,
     display: 'flex',
+    height: '100%',
+    width: '100%',
   },
   appFrame: {
-    height: '100%',
+    height: '100vh',
     zIndex: 1,
     overflow: 'auto',
     position: 'relative',
     display: 'flex',
     width: '100%',
+    [theme.breakpoints.down('sm')]: {
+      height: '100%',
+    },
   },
   appBar: {
     width: '100%',
-    background: '#ffffff',
+    background: 'linear-gradient(to right, #141e30, #243b55)',
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
@@ -96,7 +112,7 @@ const styles = theme => ({
   content: {
     padding: theme.spacing.unit * 3,
     flexGrow: 1,
-    background: 'linear-gradient(to right, #f3904f, #3b4371)',
+    background: '#cf4646'
   },
   title: {
     color: '#818181',
@@ -134,7 +150,7 @@ const styles = theme => ({
     margin: '0 auto',
   },
   searchIcon: {
-    width: theme.spacing.unit * 9,
+    width: theme.spacing.unit * 5,
     height: '100%',
     position: 'absolute',
     pointerEvents: 'none',
@@ -150,23 +166,27 @@ const styles = theme => ({
     paddingTop: theme.spacing.unit,
     paddingRight: theme.spacing.unit,
     paddingBottom: theme.spacing.unit,
-    paddingLeft: theme.spacing.unit * 10,
+    paddingLeft: theme.spacing.unit * 9,
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('md')]: {
       width: 200,
     },
+    [theme.breakpoints.down('xs')]: {
+      paddingLeft: theme.spacing.unit * 4,
+    },
   },
   chips: {
     display: 'flex',
     flexWrap: 'wrap',
+    color: '#818181',
   },
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade('#fccf5d', 0.5),
+    backgroundColor: fade('#818181', 0.5),
     '&:hover': {
-      backgroundColor: fade('#fccf5d', 0.75),
+      backgroundColor: fade('#818181', 0.75),
     },
     marginRight: theme.spacing.unit * 2,
     marginLeft: 0,
@@ -188,6 +208,22 @@ const styles = theme => ({
   },
   chip: {
     margin: theme.spacing.unit / 4,
+    minWidth: 50,
+  },
+  genre: {
+    color: '#818181',
+  },
+  cssFocused: {
+    color: '#fccf5d',
+    borderBottomColor: '#fccf5d',
+    "&$focused:after": {
+      borderBottomColor: '#fccf5d',
+    }
+  },
+  cssUnderline: {
+    '&:after': {
+      borderBottomColor: '#fccf5d',
+    },
   },
 });
 
@@ -266,89 +302,96 @@ class MainLayout extends Component {
     );
 
     return (
-      <div className={classes.root}>
-        <div className={classes.appFrame}>
-          <CssBaseline />
-          <AppBar
-            position="fixed"
-            className={classNames(classes.appBar, {
-              [classes.appBarShift]: isDrawerOpen,
-            })}
-          >
-            <Toolbar disableGutters>
-              <Grid
-                alignItems="center"
-                direction="row"
-                container
-                className={classes.root}
-                spacing={8}
-              >
-                <Grid item xs={1}>
-                  <IconButton
-                    className={classes.title}
-                    aria-label="Open drawer"
-                    onClick={this.toggleDrawer({ isDrawerOpen: !isDrawerOpen })}
-                    className={`${classes.title} ${classes.menuButton}`}
-                  >
-                    <MenuIcon />
-                  </IconButton>
-                </Grid>
-                <Grid className={classes.centered} item xs={5}>
-                  <FormControl className={classes.formControl}>
-                    <InputLabel shrink htmlFor="age-native-label-placeholder">
-                      Genre
-                    </InputLabel>
-                    <Select
-                      displayEmpty
-                      value={genreName}
-                      onChange={this.handleGenreChange}
-                      input={<Input id="select-multiple-chip" />}
-                      renderValue={selected => {
-                        if (selected === '') {
-                          return <em>All</em>;
-                        }
-                        return <div className={classes.chips}>
-                          <Chip key={selected} label={selected} className={classes.chip} />
-                        </div>
-                      }}
-                      MenuProps={MenuProps}
+      <MuiThemeProvider theme={theme}>
+        <div className={classes.root}>
+          <div className={classes.appFrame}>
+            <CssBaseline />
+            <AppBar
+              position="fixed"
+              className={classNames(classes.appBar, {
+                [classes.appBarShift]: isDrawerOpen,
+              })}
+            >
+              <Toolbar disableGutters>
+                <Grid
+                  alignItems="center"
+                  direction="row"
+                  container
+                  className={classes.root}
+                  spacing={8}
+                >
+                  <Grid item xs={2}>
+                    <IconButton
+                      className={classes.title}
+                      aria-label="Open drawer"
+                      // onClick={this.toggleDrawer({ isDrawerOpen: !isDrawerOpen })}
+                      className={`${classes.title} ${classes.menuButton}`}
                     >
-                      <MenuItem value="">
-                        <em>None</em>
-                      </MenuItem>
-                      {MOVIE_GENRES.genres.map(genre => (
-                        <MenuItem key={genre} value={genre.name}>
-                          {genre.name}
-                        </MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
-                </Grid>
-                <Grid item xs={6}>
-                  <div className={classes.search}>
-                    <div className={classes.searchIcon}>
-                      <SearchIcon />
+                      <MenuIcon />
+                    </IconButton>
+                  </Grid>
+                  <Grid item xs={5}>
+                    <div className={classes.search}>
+                      <div className={classes.searchIcon}>
+                        <SearchIcon />
+                      </div>
+                      <InputBase
+                        onChange={this.handleChange}
+                        placeholder="Search Movies"
+                        classes={{
+                          root: classes.inputRoot,
+                          input: classes.inputInput,
+                        }}
+                      />
                     </div>
-                    <InputBase
-                      onChange={this.handleChange}
-                      placeholder="Search…"
-                      classes={{
-                        root: classes.inputRoot,
-                        input: classes.inputInput,
-                      }}
-                    />
-                  </div>
+                  </Grid>
+                  <Grid className={classes.centered} item xs={5}>
+                    <FormControl className={classes.formControl}>
+                      <InputLabel focused={false} className={classes.genre} shrink htmlFor="age-native-label-placeholder">
+                        Genre
+                    </InputLabel>
+                      <Select
+                        displayEmpty
+                        focused={false}
+                        value={genreName}
+                        onChange={this.handleGenreChange}
+                        input={<Input id="select-multiple-chip" />}
+                        classes={{
+                          root: classes.cssFocused,
+                          selectMenu: classes.cssUnderline,
+                        }}
+                        renderValue={selected => {
+                          if (selected === '') {
+                            return <Chip label="All" className={classes.chip} />
+                          }
+                          return <div className={classes.chips}>
+                            <Chip key={selected} label={selected} className={classes.chip} />
+                          </div>
+                        }}
+                        MenuProps={MenuProps}
+                      >
+                        <MenuItem value="">
+                          <em>All</em>
+                        </MenuItem>
+                        {MOVIE_GENRES.genres.map(genre => (
+                          <MenuItem key={genre} value={genre.name}>
+                            {genre.name}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </FormControl>
+                  </Grid>
                 </Grid>
-              </Grid>
-            </Toolbar>
-          </AppBar>
-          {/* {drawer} */}
-          <main className={classes.content}>
-            <div className={classes.fixed} />
-            <Main {...{ search, genreId }} movieData={data.allMovie.edges} />
-          </main>
+              </Toolbar>
+            </AppBar>
+            {/* {drawer} */}
+            <main className={classes.content}>
+              <div className={classes.fixed} />
+              <Main {...{ search, genreId }} movieData={data.allMovie.edges} />
+            </main>
+          </div>
         </div>
-      </div >
+      </MuiThemeProvider>
     );
   }
 }
@@ -369,6 +412,7 @@ export const query = graphql`
             rating
             overview
             genres
+            releaseDate
           }
           image {
             childImageSharp {
