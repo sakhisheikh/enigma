@@ -6,7 +6,7 @@ import Fade from '@material-ui/core/Fade';
 import MovieCard from './MovieCard';
 import { Typography } from '@material-ui/core';
 
-const styles = {
+const styles = theme => ({
   root: {
     flexGrow: 1,
   },
@@ -23,8 +23,11 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
     display: 'flex',
+    [theme.breakpoints.down('xs')]: {
+      margin: 30,
+    },
   },
-};
+});
 
 class Main extends Component {
   state = {
