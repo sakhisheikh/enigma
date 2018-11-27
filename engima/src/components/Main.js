@@ -30,8 +30,10 @@ class Main extends Component {
 
   render() {
     const { classes, movieData, search, genreId } = this.props;
-    console.log("PROPS", genreId, search);
-    const filtered = search || genreId ? movieData.filter(movie => new RegExp(search, 'i').test(movie.node.name.title) && movie.node.name.genres.includes(genreId)) : movieData
+
+    const filteredList = search || genreId ? movieData.filter(movie => new RegExp(search, 'i').test(movie.node.name.title))
+      .filter(movie => genreId ? movie.node.name.genres.includes(genreId) : true) : movieData
+
     return (
       <React.Fragment>
         <Grid container className={classes.root}>
@@ -44,7 +46,7 @@ class Main extends Component {
               className={`${classes.root}`}
               spacing={8}
             >
-              {filtered.map((movie, i) => (
+              {filteredList && filteredList.map((movie, i) => (
                 <Grid item xs={12} lg={2} md={2} sm={12} key={i}>
                   <MovieCard
                     key={i.toString()}
