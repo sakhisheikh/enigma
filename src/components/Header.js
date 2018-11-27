@@ -1,3 +1,3 @@
-import React from "react"
+import React from 'react';
 
-export default ({ headerText }) => <h1>{headerText}</h1>
+export default ({ headerText }) => <h1>{headerText}</h1>;

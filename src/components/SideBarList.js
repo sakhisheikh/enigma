@@ -87,4 +87,3 @@ SideBarList.propTypes = {
 };
 
 export default withStyles(styles)(SideBarList);
-

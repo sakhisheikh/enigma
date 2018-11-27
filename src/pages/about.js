@@ -2,7 +2,11 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import { withStyles, MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import {
+  withStyles,
+  MuiThemeProvider,
+  createMuiTheme,
+} from '@material-ui/core/styles';
 import { Link } from '@reach/router';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
@@ -148,13 +152,12 @@ class MainLayout extends Component {
           open={isDrawerOpen}
           onKeyDown={this.toggleDrawer({ isDrawerOpen: false })}
         >
-          <ListItem
-            button
-            component={Link}
-            to="/"
-            className={classes.toolbar}
-          >
-            <img className={classes.logo} src="build/public/images/logo_white.svg" alt="" />
+          <ListItem button component={Link} to="/" className={classes.toolbar}>
+            <img
+              className={classes.logo}
+              src="build/public/images/logo_white.svg"
+              alt=""
+            />
           </ListItem>
           <SideBarList className={classes.sideList} />
         </Drawer>
@@ -172,8 +175,14 @@ class MainLayout extends Component {
             })}
           >
             <Toolbar disableGutters>
-              <Grid alignItems="center" direction="row" container className={classes.root} spacing={8}>
-                <Grid item xs={5} >
+              <Grid
+                alignItems="center"
+                direction="row"
+                container
+                className={classes.root}
+                spacing={8}
+              >
+                <Grid item xs={5}>
                   <IconButton
                     className={classes.title}
                     aria-label="Open drawer"
@@ -183,7 +192,7 @@ class MainLayout extends Component {
                     <MenuIcon />
                   </IconButton>
                 </Grid>
-                <Grid item xs={6} >
+                <Grid item xs={6}>
                   <Button
                     align="center"
                     size="large"
