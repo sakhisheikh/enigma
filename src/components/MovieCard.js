@@ -24,6 +24,7 @@ const styles = theme => ({
   },
   card: {
     maxWidth: 150,
+    boxShadow: '0 0 10px rgba(0,0,0,0.85)',
     [theme.breakpoints.down('xs')]: {
       maxWidth: 325,
     },
@@ -37,6 +38,7 @@ const styles = theme => ({
   },
   overviewCard: {
     maxWidth: 500,
+    boxShadow: '0 0 10px rgba(0,0,0,0.85)',
     [theme.breakpoints.down('xs')]: {
       maxWidth: 350,
     },
