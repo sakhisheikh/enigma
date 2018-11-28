@@ -33,10 +33,15 @@ These are following reasons:
 
 - gatsby is built on Redux as it helps to override all actions when they get dispatched during compiling its build. I used `onCreatePage` and `onCreateNode` to manipulte page creation behaviour and data fetching from REST API of `theMovieDB`.
 
+4. **PWA Support**
+
+- Gatsby provides `gatsby-plugin-offline` and `gatsby-plugin-manifest` to register a service worker for offline mode out of the box.
+
 ## 🤝 Audits
 
 After running Google lighthouse audits, the results were outstanding for the basic prototype:
 
 - All audits categories met the satisfactory criteria.
+- PWA score is super amazing
 
 ![Drag Racing](lighthouse.png)

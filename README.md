@@ -14,7 +14,7 @@
 
 ## Introduction
 
-Engima is a react based PWA powered by GatsbyJS offers best movies collection at latest with highly configurable features for both dev and production mode.
+Engima is a react based PWA powered by GatsbyJS built on `The PRPL pattern` offers best movies collection at latest with highly configurable features for both dev and production mode.
 
 *Please read [COMMENTS.md](./COMMENTS.md) for more details*
 
@@ -36,6 +36,7 @@ This app is built with certain essential components:
 
 ## `Features`
 
+ * PWA - offline mode
  * Route based code splitting to reduce initial app load time
  * React suspence based fallback placeholders on images
  * Eslist - Airbnb styleguide is being followed
