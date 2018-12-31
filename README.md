@@ -1,7 +1,5 @@
 <p align="center">
-  <a href="https://gatsbyjs.org">
-    <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
-  </a>
+    <img alt="Enigma" src="eNIGMA.svg"/>
 </p>
 <h1 align="center">
   ENIGMA v1
