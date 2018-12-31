@@ -46,7 +46,7 @@ This app is built with certain essential components:
 
 To install dependencies:  ```yarn```
 
-To run the server locally: ```gatsby develop -0```
+To run the server locally: ```gatsby develop -o```
 
 To create production build:  ```gatsby build```
 
