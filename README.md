@@ -1,5 +1,5 @@
 <p align="center">
-    <img alt="Enigma" src="eNIGMA.svg"/>
+    <img alt="Enigma" src="ENIGMA.png"/>
 </p>
 <h1 align="center">
   ENIGMA v1
